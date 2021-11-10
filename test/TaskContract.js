@@ -25,4 +25,26 @@ contract("TaskContract", () =>{
         assert.equal(taskCounter, 1);
 
     })
+
+    it('task created successfully', async () => {
+        const result = await this.taskContract.createTask('some task', 'description two');
+        const taskEvent = result.logs[0].args
+        const tasksCounter = await this.taskContract.taskCounter();
+
+        assert.equal(tasksCounter, 2);
+        assert.equal(taskEvent.id.toNumber(), 2);
+        assert.equal(taskEvent.title, 'some task');
+        assert.equal(taskEvent.description, 'description two');
+        assert.equal(taskEvent.done, false);
+    })
+
+    it("task toggle done", async () => {
+        const result = await this.taskContract.toggleDone(1);
+        const taskEvent = result.logs[0].args;
+        const task = await this.taskContract.tasks(1);
+    
+        assert.equal(task.done, true);
+        assert.equal(taskEvent.id.toNumber(), 1);
+        assert.equal(taskEvent.done, true);
+    });
 })
