@@ -26,6 +26,17 @@ contract FormCecatCrud is FormCecatInscription {
                           29);
     }
 
+    event InscriptionCreated(
+        string projectName, 
+        uint64 studentCode,
+        uint16 signatureCode,
+        string studentEmail,
+        uint16 investigationGroupCode,
+        uint64 professorCode,
+        string projectObjective,
+        uint16 codeBD
+    );
+
     function createInscription(string memory _projectName, 
                                uint64 _studentCode,
                                uint16 _signatureCode,
@@ -44,5 +55,14 @@ contract FormCecatCrud is FormCecatInscription {
         setCodeBD(_codeBD);
         store(inscriptionCounter);
         inscriptionCounter++;
+        emit InscriptionCreated(_projectName, 
+                                _studentCode, 
+                                _signatureCode, 
+                                _studentEmail, 
+                                _investigationGroupCode,
+                                _professorCode,
+                                _projectObjective,
+                                _codeBD
+                                );
     }
 }

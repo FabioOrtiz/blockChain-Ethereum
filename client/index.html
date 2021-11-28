@@ -26,14 +26,14 @@
 
             <div class="card">
                 <div class="card-body">
-                    <form>
+                    <form id="inscriptionForm">
                         <div class="row g-3 align-items-center">
                             <!-- Campo 1 -->
                             <div class="col-3">
                                 <label for="campo1" class="form-label">Tema del Proyecto de investigación (Nombre Proyecto)</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class="form-control" id="campo1">
+                                <input type="text" class="form-control" id="campo1" name="title">
                             </div>
                             <!--<div id="" class="form-text">We'll never share your email with anyone else.</div>-->
 
@@ -42,7 +42,7 @@
                                 <label for="campo2" class="form-label">Código de Estudiante</label>
                             </div>
                             <div class="col-9">
-                                <input type="number" class="form-control" id="campo2">
+                                <input type="number" class="form-control" id="campo2" name="code">
                             </div>
 
                             <!-- Campo 3 -->
@@ -50,15 +50,15 @@
                                 <label for="campo3" class="form-label">Proyecto Curricular</label>
                             </div>
                             <div class="col-9">
-                                <input type="number" class="form-control" id="campo3"">
+                                <input type="number" class="form-control" id="campo3" name="numberCurriculum">
                             </div>
 
                             <!-- Campo 4 -->
                             <div class="col-3">
-                                <label for="campo4" class="form-label">Correo Eléctronico Institucional</label>
+                                <label for="campo4" class="form-label">Correo Institucional</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class="form-control" id="campo4">
+                                <input type="text" class="form-control" id="campo4" name="emailStudent">
                             </div>
 
                             <!-- Campo 5 -->
@@ -66,7 +66,7 @@
                                 <label for="campo5" class="form-label">Grupo de Investigación</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class="form-control" id="campo5">
+                                <input type="text" class="form-control" id="campo5" name="numberInvestigationGroup">
                             </div>
 
                             <!-- Campo 6 -->
@@ -74,7 +74,7 @@
                                 <label for="campo6" class="form-label">Profesor a Cargo (Director)</label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class="form-control" id="campo6">
+                                <input type="text" class="form-control" id="campo6" name="directorTeacher">
                             </div>
 
                             <!-- Campo 7 -->
@@ -82,10 +82,10 @@
                                 <label for="campo7" class="form-label">Objetivo General del Proyecto de investigación</label>
                             </div>
                             <div class="col-9">
-                                <input type="email" class="form-control" id="campo7">
+                                <input type="text" class="form-control" id="campo7" name="objectiveProject">
                             </div>
                             
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>
                 </div>
             </div>
@@ -101,8 +101,7 @@
 
 </html>
 
-<!--
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -146,5 +145,4 @@
     <script src="./app.js"></script>
     <script src="./ui.js"></script>
 </body>
-</html>
--->
+</html> -->

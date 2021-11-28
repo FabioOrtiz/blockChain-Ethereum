@@ -1,4 +1,4 @@
-App = {
+/* App = {
     contracts: {},
     init: async () =>{
         console.log('Loaded')
@@ -43,6 +43,7 @@ App = {
     },
 
     renderTask: async () =>{
+        console.log(App.taskContract);
         const taskCounter = await App.taskContract.taskCounter()
         const taskCounterNumber = taskCounter.toNumber()
 
@@ -98,5 +99,57 @@ App = {
         })
 
         window.location.reload();
+    }
+} */
+
+App = {
+    contracts: {},
+    init: async () =>{
+        console.log('Loaded')
+        await App.loadEthereum()
+        await App.loadAccount()
+        await App.loadContracts()
+    },
+
+    loadEthereum: async () =>{
+        if (window.ethereum){
+            App.web3Provider = window.ethereum
+            await window.ethereum.request({method: 'eth_requestAccounts'})
+        } else if (window.web3){
+            web3 = new Web3(window.web3.currentProvider)
+        }
+        else{
+            console.log('Install Metamask');
+        }
+    },
+
+    loadAccount: async () =>{
+        const accounts = await window.ethereum.request({method: 'eth_requestAccounts'})
+        App.account = accounts[0]
+    },
+
+    loadContracts: async () =>{
+        const res = await fetch("FormCecatCrud.json")
+        const FormCecatCrudJSON = await res.json()
+        App.contracts.cecatContract = TruffleContract(FormCecatCrudJSON)
+        App.contracts.cecatContract.setProvider(App.web3Provider)
+        App.cecatContract = await App.contracts.cecatContract.deployed()
+    },
+
+    createInscription: async (title, code, numberCurriculum, emailStudent, numberInvestigationGroup, directorTeacher, objectiveProject) =>{ 
+        console.log(App.cecatContract);
+        console.log(App.account);
+        const result = await App.cecatContract.createInscription('Test 2',
+        02,
+        02,
+        "a@c.com",
+        02,
+        02,
+        'Investigation Special 2',
+        02, {
+            from: App.account
+        });      
+        const taskEvent = result;
+        console.log(taskEvent);
     }
 }
